@@ -1,47 +1,44 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import Calculate from '../logic/Calculate';
+import Button from './Button';
+import Display from './Display';
 
-export class Calculator extends PureComponent {
-  render() {
+class Calculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    this.onBtnPressed = this.onBtnPressed.bind(this);
+
+    this.setState({
+      total: null,
+      next: null,
+      operation: null,
+    });
+  }
+
+  onBtnPressed = (btnName) => {
+    const result = Calculate(this.state, btnName);
+    this.setState(result);
+  };
+
+  render = () => {
+    const { total, next, operation } = this.state;
+    let buffer = `${total}${operation}${next}`.replace(/null/g, '');
+    buffer = buffer.replace(/undefined/g, '');
+    const window = buffer;
+
     return (
-      <>
-        <div className="calculator">
-          <div className="display">
-            <div className="value">0</div>
-          </div>
-          <div className="keypad">
-            <div className="row_btn">
-              <div className="keys">AC</div>
-              <div className="keys">+/-</div>
-              <div className="keys">%</div>
-              <div className="keys sign">:</div>
-            </div>
-            <div className="row_btn">
-              <div className="keys">7</div>
-              <div className="keys">8</div>
-              <div className="keys">9</div>
-              <div className="keys sign">x</div>
-            </div>
-            <div className="row_btn">
-              <div className="keys">4</div>
-              <div className="keys">5</div>
-              <div className="keys">6</div>
-              <div className="keys sign">-</div>
-            </div>
-            <div className="row_btn">
-              <div className="keys">1</div>
-              <div className="keys">2</div>
-              <div className="keys">3</div>
-              <div className="keys sign">+</div>
-            </div>
-            <div className="row_btn">
-              <div className="keys zero">0</div>
-              <div className="keys">.</div>
-              <div className="keys sign">=</div>
-            </div>
-          </div>
-        </div>
-
-      </>
+      <div className="main">
+        <Display display={window === '' ? undefined : window} />
+        <Button ctrls={['AC', '+/-', '%', '÷']} setBtn={this.onBtnPressed} last={false} />
+        <Button ctrls={['7', '8', '9', 'x']} setBtn={this.onBtnPressed} last={false} />
+        <Button ctrls={['4', '5', '6', '-']} setBtn={this.onBtnPressed} last={false} />
+        <Button ctrls={['1', '2', '3', '+']} setBtn={this.onBtnPressed} last={false} />
+        <Button ctrls={['0', '.', '=']} setBtn={this.onBtnPressed} last />
+      </div>
     );
   }
 }
