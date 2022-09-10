@@ -1,38 +1,63 @@
-.calculator {
-  width: 30%;
-  position: relative;
-  margin: 0 auto;
-  top: 25%;
+.main {
+  margin-right: auto;
+  margin-left: auto;
+  width: 40%;
+  margin-top: 10px;
+  padding: 15px;
 }
 
-.row_btn {
+.display {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  background-color: #b2beb5;
+}
+
+.pixel {
+  color: white;
+  margin-right: 10px;
+}
+
+.ctrls {
   display: flex;
 }
 
-.value {
-  padding: 16px;
-  font-size: 30px;
-  background-color: #858693;
-  color: #eee;
-  text-align: right;
+.ctrl-btn-row {
+  margin-right: 1px;
+  width: 25%;
+  height: 70px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #aeaeae solid 2px;
 }
 
-.keys {
-  flex: 1;
-  padding: 16px;
-  font-size: 18px;
-  color: #444;
-  outline: none;
+.font {
+  font-size: 20px;
+}
+
+.ctrl-btn-2-row {
+  width: 50%;
+}
+
+.bg-ash {
+  border: none;
+}
+
+.bg-ash:hover {
+  background-color: #aeaeae;
   cursor: pointer;
-  background-color: #eee;
-  border: 1px solid rgb(219, 216, 216);
-  text-align: center;
 }
 
-.zero {
-  flex: 2.5;
+.bg-orange {
+  background-color: #ff8c00;
+  border: #aeaeae 1px solid;
 }
 
-.sign {
-  background-color: #f5913e;
+.display-txt {
+  font-size: 35px;
+  font-family: 'Courier New', Courier, monospace;
 }
