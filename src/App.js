@@ -1,15 +1,21 @@
-import React, { PureComponent } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Nav from './components/navbar';
+import Home from './components/Home';
 import Calculator from './components/Calculator';
+import Quotes from './components/Quotes';
 import './index.css';
 
-export class App extends PureComponent {
-  render() {
-    return (
-      <div>
-        <Calculator />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/calculator" element={<Calculator />} />
+        <Route path="/quotes" element={<Quotes />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
